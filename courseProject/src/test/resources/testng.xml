@@ -1,0 +1,89 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite">
+
+    <!-- UITests for Chrome Headless -->
+    <test name="UITestsChromeHeadless">
+        <parameter name="appType" value="local"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="headless" value="true"/>
+        <groups>
+            <run>
+                <include name="ui_tests"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.example.tests.UI.KanbanAppTest"/>
+            <class name="com.example.tests.UI.KanbanLoginTest"/>
+        </classes>
+    </test>
+
+    <!-- UITests for Chrome -->
+    <test name="UITestsChrome">
+        <parameter name="appType" value="local"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="headless" value="false"/>
+        <groups>
+            <run>
+                <include name="ui_tests"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.example.tests.UI.KanbanAppTest"/>
+            <class name="com.example.tests.UI.KanbanLoginTest"/>
+        </classes>
+    </test>
+
+    <!-- UITests for Firefox -->
+    <test name="UITestsFirefox">
+        <parameter name="appType" value="local"/>
+        <parameter name="browser" value="firefox"/>
+        <parameter name="headless" value="false"/>
+        <groups>
+            <run>
+                <include name="ui_tests"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.example.tests.UI.KanbanAppTest"/>
+            <class name="com.example.tests.UI.KanbanLoginTest"/>
+        </classes>
+    </test>
+
+    <!-- APITestsLocal -->
+    <test name="APITestsLocal">
+        <parameter name="appType" value="local"/>
+        <groups>
+            <run>
+                <include name="api_tests"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.example.tests.API.KanbanApiTest"/>
+        </classes>
+    </test>
+
+    <!-- APITestsRemote -->
+    <test name="APITestsRemote">
+        <parameter name="appType" value="remote"/>
+        <groups>
+            <run>
+                <include name="api_tests"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.example.tests.API.KanbanApiTest"/>
+        </classes>
+    </test>
+
+</suite>
+
+        <!-- Commands to use -->
+        <!-- mvn test -P local -->
+        <!-- mvn test -P remote -->
+        <!-- mvn test -P local -Dbrowser=chrome -->
+        <!-- mvn test -P local -Dbrowser=chrome -->
+        <!-- mvn test -P local -Dgroups=login_tests     - it's for run login UI test  -->
+        <!-- mvn test -P remote -Dgroups=ui_tests_remote -->
+
+
+
